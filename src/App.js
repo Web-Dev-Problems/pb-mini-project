@@ -1,23 +1,40 @@
 import logo from './logo.svg';
 import './App.css';
+import Box from './components/Box.js';
+import { useEffect, useState, useRef } from 'react';
+import Compare from './components/Compare';
 
 function App() {
+  const boxList = {
+    1: 100, 
+    2: 250,
+    3: 125,
+    4: 180,
+    5: 295,
+  }
+  const [selected, setSelected] = useState({})
+  const [compareEnabled, setCompareEnabled] = useState(false)
+  const [comparing, setComparing] = useState(false)
+  useEffect(() => {
+    if (Object.keys(selected).length >= 2) {
+      setCompareEnabled(true)
+    }
+    else {
+      setCompareEnabled(false)
+    }
+  }, [selected])
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <section className='boxes'>
+        {Object.keys(boxList).map((i) => {
+          return (<Box index={i} data={boxList[i]} selected = {selected} setSelected = {setSelected} />)
+        })}
+      </section>
+      <section className='compare-section'><button className={`compare ${compareEnabled? "visible": ""}`} onClick={() => {
+        compareEnabled && setComparing(true)
+        }}>Compare</button></section>
+      {comparing && <Compare selected={selected} setComparing={setComparing} />}
     </div>
   );
 }
