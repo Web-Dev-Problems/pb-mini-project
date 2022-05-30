@@ -28,7 +28,7 @@ function App() {
     <div className="App">
       <section className='boxes'>
         {Object.keys(boxList).map((i) => {
-          return (<Box index={i} data={boxList[i]} selected = {selected} setSelected = {setSelected} />)
+          return (<Box key={i} index={i} data={boxList[i]} selected = {selected} setSelected = {setSelected} />)
         })}
       </section>
       <section className='compare-section'><button className={`compare ${compareEnabled? "visible": ""}`} onClick={() => {

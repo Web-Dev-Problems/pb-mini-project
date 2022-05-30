@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import "./Box.css"
 
-const Box = ({ index, position, top, left, data, selected, setSelected, showCheckBox=true, maxHeight=250 }) => {
+const Box = ({ index, position, data, selected, setSelected, showCheckBox=true, maxHeight=250}) => {
     const [checkedBox, setCheckedBox] = useState(!showCheckBox)
     const boxCheck = (e) => {
         if (e.target.checked) {
@@ -16,31 +16,25 @@ const Box = ({ index, position, top, left, data, selected, setSelected, showChec
         }
     }
     return (
-        <section className='box-container' style={{gridColumnStart: parseInt(position)+1, 
-        gridColumnEnd: parseInt(position)+2}} data-index={index} data-position={position} data-data={data}>
+        <section className='box-container' style={{gridColumnStart: (!isNaN(position) ? parseInt(position)+1 : 0), 
+        gridColumnEnd: (!isNaN(position) ? parseInt(position)+2 : 0)}} data-index={index} data-position={position} data-data={data}>
             <span className={`box ${checkedBox ? "checked-box" : ""}`} 
             style={{
             height: data,
             "--box-height": `${data}px`,
             "--box-position": `${position}`,
-            "--box-top": `${top}`,
-            "--box-left": `${left}`
-            // "--max-box-height": `${maxHeight}px`
             }}>
             {data}
             {showCheckBox && <input type="checkbox"
             className="checkbox"
             onInput={boxCheck} />}</span>
-            {!showCheckBox &&
-            <span className={`box ${checkedBox ? "checked-box" : ""} static`} data-index={index} data-position={position} data-data={data}
+        {!showCheckBox &&
+        <span className={`box ${checkedBox ? "checked-box" : ""} static`} data-index={index} data-position={position} data-data={data}
             style={{gridColumnStart: position+1, 
             gridColumnEnd: position+2,
-            height: maxHeight + 4,
+            height: maxHeight,
             "--box-height": `${data}px`,
             "--box-position": `${position}`,
-            "--box-top": `${top}`,
-            "--box-left": `${left}`
-            // "--max-box-height": `${maxHeight}px`
             }}>
             </span>}
         </section>

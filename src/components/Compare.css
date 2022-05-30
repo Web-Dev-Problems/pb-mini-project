@@ -30,33 +30,30 @@
     }
 }
 .overlay .compare-window {
-    min-width: 40%;
+    min-width: 30%;
     min-height: 30%;
     width: max-content;
     height: max-content;
+    height: var(--max-height);
     opacity: 100%;
     background-color: white;
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: repeat(var(--selected-length), minmax(1px, 150px));
-    grid-template-columns: repeat(var(--selected-length), minmax(1px, 150px));
+    -ms-grid-columns: repeat(var(--selected-length), minmax(1px, 154px));
+    grid-template-columns: repeat(var(--selected-length), minmax(1px, 154px));
     grid-column-gap: 20px;
     grid-template-rows: 1fr;
-    /* display: flex;
-    flex-direction: row;
-    flex-direction: row; */
-    /* justify-content: center;
-    align-items: flex-end; */
+    justify-content: center;
     position: relative;
     padding: 50px;
     border-radius: 5px;
 }
 .overlay .compare-window .box-container {
-    /* z-index: 3; */
-    /* background-color: red; */
+    width: 154px;
 }
 .overlay .compare-window .box-container .checked-box {
     z-index: 1;
+    transition: none;
 }
 .overlay .compare-window .box-container .static {
     z-index: 3;
@@ -65,9 +62,6 @@
     border-color: rgb(24 61 191);
     /* border: 0; */
     color: black;
-    display: flex;
-    /* background-color: transparent; */
-    align-items: flex-end;
     box-shadow: none;
     cursor: pointer;
     -webkit-touch-callout: none;
