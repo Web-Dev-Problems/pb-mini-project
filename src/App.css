@@ -1,0 +1,56 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.App .boxes {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  position: static;
+  align-items: flex-start;
+}
+.App .compare-section {
+  width: 100px;
+  height: 50px;
+}
+.App .compare-section .compare {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(229 229 229);
+  border: none;
+  color:rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  font-weight: bold;
+  transition: ease-in-out 0.2s;
+  border-radius: 4px;
+}
+
+.App .compare-section .visible{
+  background-color: rgb(32 76 234);
+  opacity: 90%;
+  box-shadow: 1px 2px 8px 2px rgb(32 76 234 / 80%);
+  color: white;
+}
+
+.App .box-add:hover span{
+  border: solid transparent 2px;
+  box-shadow: 0px 0px 4px 0px rgb(32 76 234);
+}
+
+.App .box-add span p{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: solid rgb(229 229 229) 2px;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+}
+
+.App .box-add:hover span p{
+  color:rgb(32 76 234 / 80%);
+  border-color: transparent;
+  box-shadow: 0px 0px 4px 0px rgb(32 76 234);
+}
