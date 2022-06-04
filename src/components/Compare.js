@@ -8,12 +8,16 @@ const Compare = ({ selected, setSelected, setComparing }) => {
 
   var mouseDownPos = null
   var initTop = null
+  var initTop2 = null
+  var initLeft2 = null
   const handleMouseDown = (event) => {
     if (event.target.classList.contains("checked-box")) {
       mouseDownPos = event.target.parentElement.children[0]
       mouseDownPos.style.position = "fixed"
       mouseDownPos.style.zIndex = 2
-      initTop = mouseDownPos.parentElement.getBoundingClientRect().y 
+      initTop2 = mouseDownPos.getBoundingClientRect().top
+      initLeft2 = mouseDownPos.getBoundingClientRect().left
+      initTop = mouseDownPos.parentElement.getBoundingClientRect().y
         + mouseDownPos.parentElement.getBoundingClientRect().height
         - mouseDownPos.getBoundingClientRect().height
       mouseDownPos.style.top = event.clientY - mouseDownPos.getBoundingClientRect().height/2 + "px";
@@ -55,7 +59,10 @@ const Compare = ({ selected, setSelected, setComparing }) => {
       mouseDownPos.style.zIndex = 1
     }
     else if (mouseDownPos) {
-      mouseDownPos.style.position = "revert";
+      // mouseDownPos.style.position = "absolute";
+      mouseDownPos.style.top = initTop2 + "px"
+      mouseDownPos.style.left = initLeft2 + "px";
+      mouseDownPos.style.zIndex = 1;
     }
   }
   useEffect(()=> {
